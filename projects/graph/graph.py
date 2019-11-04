@@ -132,24 +132,46 @@ class Graph:
         breath-first order.
         """
         # create a queue to hold the vertices
+        q = Queue()
         # enqueue the starting_vertex
-        # create an empty set visited to store visited vertices
+        q.enqueue(starting_vertex)
+        # create an empty list visited to store visited vertices
+        visited = []
         # create an empty set searched to store searched vertices
+        searched = set()
         # loop while queue is not empty
+        while q.size() > 0:
             # dequeue the queue
+            vertex = q.dequeue()
             # check if the vertex has not been searched
+            if vertex not in searched:
                 # if the dequeued vertex is the destination
+                if vertex == destination_vertex:
                     # add it to visitied
+                    visited.append(vertex)
                     # return visited
+                    return visited
                 # otherwise
+                else:
                     # add it to searched
-                    # add all its vertices to the queue
-                        # if one of them is the destination
-                            # add to visited
-                            # return visited
+                    searched.add(vertex)
                     # add it to visited
-                
-        pass  # TODO
+                    visited.append(vertex)
+                    # add all its vertices to the queue
+                    for v in self.vertices[vertex]:
+                        # if one of them is the destination
+                        if v == destination_vertex:
+                            # add to visited
+                            visited.append(v)
+                            # return visited
+                            return visited
+                        # otherwise
+                        else:
+                            # enqueue v
+                            q.enqueue(v)
+
+        # return False if not found
+        return False
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -226,12 +248,12 @@ if __name__ == '__main__':
     '''
     graph.dft_recursive(1)
 
-    # print("\nBFS print:")
-    # '''
-    # Valid BFS path:
-    #     [1, 2, 4, 6]
-    # '''
-    # print(graph.bfs(1, 6))
+    print("\nBFS print:")
+    '''
+    Valid BFS path:
+        [1, 2, 4, 6]
+    '''
+    print(graph.bfs(1, 6))
 
     # print("\nDFS print:")
     # '''
