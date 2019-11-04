@@ -151,8 +151,8 @@ class Graph:
                 if vertex == destination_vertex:
                     # add it to visitied
                     visited.append(vertex)
-                    # return visited
-                    return visited
+                    # return the path
+                    return self.find_path(visited)
 
                 # otherwise
                 else:
@@ -167,8 +167,8 @@ class Graph:
                         if v == destination_vertex:
                             # add to visited
                             visited.append(v)
-                            # return visited
-                            return visited
+                            # return path
+                            return self.find_path(visited)
                         # otherwise
                         else:
                             # enqueue v
@@ -203,8 +203,8 @@ class Graph:
                 if vertex == destination_vertex:
                     # add it to visitied
                     visited.append(vertex)
-                    # return visited
-                    return visited
+                    # return path
+                    return self.find_path(visited)
 
                 # otherwise
                 else:
@@ -219,8 +219,8 @@ class Graph:
                         if v == destination_vertex:
                             # add to visited
                             visited.append(v)
-                            # return visited
-                            return visited
+                            # return path
+                            return self.find_path(visited)
                         # otherwise
                         else:
                             # push v
