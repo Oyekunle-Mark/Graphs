@@ -35,15 +35,24 @@ class Graph:
         beginning from starting_vertex.
         """
         # create a queue to hold the vertices
+        q = Queue()
         # add the starting_vertex to the queue
+        q.enqueue(starting_vertex)
         # let a set store the visited vertices
+        visited = set()
         # loop while queue is not empty
+        while q.size() > 0:
             # dequeue the queue
+            vertex = q.dequeue()
             # if the  dequeued vertex is not in visited
+            if vertex not in visited:
                 # add to visited
+                visited.add(vertex)
                 # print the vertex
+                print(vertex)
                 # add all its connected vertices to the queue
-        pass  # TODO
+                for v in self.vertices[vertex]:
+                    q.enqueue(v)
 
     def dft(self, starting_vertex):
         """
@@ -113,22 +122,22 @@ if __name__ == '__main__':
     # '''
     # graph.dft(1)
 
-    # '''
-    # Valid BFT paths:
-    #     1, 2, 3, 4, 5, 6, 7
-    #     1, 2, 3, 4, 5, 7, 6
-    #     1, 2, 3, 4, 6, 7, 5
-    #     1, 2, 3, 4, 6, 5, 7
-    #     1, 2, 3, 4, 7, 6, 5
-    #     1, 2, 3, 4, 7, 5, 6
-    #     1, 2, 4, 3, 5, 6, 7
-    #     1, 2, 4, 3, 5, 7, 6
-    #     1, 2, 4, 3, 6, 7, 5
-    #     1, 2, 4, 3, 6, 5, 7
-    #     1, 2, 4, 3, 7, 6, 5
-    #     1, 2, 4, 3, 7, 5, 6
-    # '''
-    # graph.bft(1)
+    '''
+    Valid BFT paths:
+        1, 2, 3, 4, 5, 6, 7
+        1, 2, 3, 4, 5, 7, 6
+        1, 2, 3, 4, 6, 7, 5
+        1, 2, 3, 4, 6, 5, 7
+        1, 2, 3, 4, 7, 6, 5
+        1, 2, 3, 4, 7, 5, 6
+        1, 2, 4, 3, 5, 6, 7
+        1, 2, 4, 3, 5, 7, 6
+        1, 2, 4, 3, 6, 7, 5
+        1, 2, 4, 3, 6, 5, 7
+        1, 2, 4, 3, 7, 6, 5
+        1, 2, 4, 3, 7, 5, 6
+    '''
+    graph.bft(1)
 
     # '''
     # Valid DFT recursive paths:
