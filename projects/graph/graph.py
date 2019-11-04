@@ -242,7 +242,7 @@ class Graph:
         # get the destination vertex
         destination_vertex = vertices[-1]
         # create a new list containing destination vertex to store path
-        path = [6]
+        path = [destination_vertex]
 
         # loop backward
         for i in range(len(vertices) - 2, -1, -1):
