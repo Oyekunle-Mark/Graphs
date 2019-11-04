@@ -98,41 +98,30 @@ class Graph:
         # let a set store the visited vertices
         visited = set()
 
-        # loop while stack is not empty
-        while s.size() > 0:
-            # pop the stack
-            vertex = s.pop()
-
-            # if the popped vertex is not in visited
-            if vertex not in visited:
-                # add to visited
-                visited.add(vertex)
-                # print the vertex
-                print(vertex)
-
-                # add all its connected vertices to the queue
-                for v in self.vertices[vertex]:
-                    s.push(v)
-
         # create a recursive function recurse_dft
         def recurse_dft():
             # write a base case of size of stack is zero
             if s.size() == 0:
                 # return
                 return
+
             # pop the vertex at the top of the stack
             vertex = s.pop()
+
             # if the popped vertex is not in visited
             if vertex not in visited:
                 # add to visited
                 visited.add(vertex)
                 # print the vertex
                 print(vertex)
+
                 # add all its connected vertices to the queue
                 for v in self.vertices[vertex]:
                     s.push(v)
+
             # call recurse_dft
             recurse_dft()
+
         # call recurse_dft
         recurse_dft()
 
