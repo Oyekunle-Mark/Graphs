@@ -139,10 +139,12 @@ class Graph:
         visited = []
         # create an empty set searched to store searched vertices
         searched = set()
+
         # loop while queue is not empty
         while q.size() > 0:
             # dequeue the queue
             vertex = q.dequeue()
+
             # check if the vertex has not been searched
             if vertex not in searched:
                 # if the dequeued vertex is the destination
@@ -151,12 +153,14 @@ class Graph:
                     visited.append(vertex)
                     # return visited
                     return visited
+
                 # otherwise
                 else:
                     # add it to searched
                     searched.add(vertex)
                     # add it to visited
                     visited.append(vertex)
+
                     # add all its vertices to the queue
                     for v in self.vertices[vertex]:
                         # if one of them is the destination
@@ -187,10 +191,12 @@ class Graph:
         visited = []
         # create an empty set searched to store searched vertices
         searched = set()
+
         # loop while stack is not empty
         while s.size() > 0:
             # pop the stack
             vertex = s.pop()
+
             # check if the vertex has not been searched
             if vertex not in searched:
                 # if the popped vertex is the destination
@@ -199,12 +205,14 @@ class Graph:
                     visited.append(vertex)
                     # return visited
                     return visited
+
                 # otherwise
                 else:
                     # add it to searched
                     searched.add(vertex)
                     # add it to visited
                     visited.append(vertex)
+
                     # add all its vertices to the stack
                     for v in self.vertices[vertex]:
                         # if one of them is the destination
