@@ -179,7 +179,47 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        # create a stack to hold the vertices
+        s = Stack()
+        # add the starting_vertex
+        s.push(starting_vertex)
+        # create an empty list visited to store visited vertices
+        visited = []
+        # create an empty set searched to store searched vertices
+        searched = set()
+        # loop while stack is not empty
+        while s.size() > 0:
+            # pop the stack
+            vertex = s.pop()
+            # check if the vertex has not been searched
+            if vertex not in searched:
+                # if the popped vertex is the destination
+                if vertex == destination_vertex:
+                    # add it to visitied
+                    visited.append(vertex)
+                    # return visited
+                    return visited
+                # otherwise
+                else:
+                    # add it to searched
+                    searched.add(vertex)
+                    # add it to visited
+                    visited.append(vertex)
+                    # add all its vertices to the stack
+                    for v in self.vertices[vertex]:
+                        # if one of them is the destination
+                        if v == destination_vertex:
+                            # add to visited
+                            visited.append(v)
+                            # return visited
+                            return visited
+                        # otherwise
+                        else:
+                            # push v
+                            s.push(v)
+
+        # return False if not found
+        return False
 
 
 if __name__ == '__main__':
@@ -255,10 +295,10 @@ if __name__ == '__main__':
     '''
     print(graph.bfs(1, 6))
 
-    # print("\nDFS print:")
-    # '''
-    # Valid DFS paths:
-    #     [1, 2, 4, 6]
-    #     [1, 2, 4, 7, 6]
-    # '''
-    # print(graph.dfs(1, 6))
+    print("\nDFS print:")
+    '''
+    Valid DFS paths:
+        [1, 2, 4, 6]
+        [1, 2, 4, 7, 6]
+    '''
+    print(graph.dfs(1, 6))
