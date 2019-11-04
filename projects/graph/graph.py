@@ -229,6 +229,39 @@ class Graph:
         # return False if not found
         return False
 
+    def find_path(self, vertices):
+        """Will take a list of visited vertices and construct the shortest
+        path from it
+
+        Arguments:
+            vertices {list} -- list of visited vertices
+
+        Returns:
+            list -- the shortest path
+        """
+        # get the destination vertex
+        destination_vertex = vertices[-1]
+        # create a new list containing destination vertex to store path
+        path = [6]
+
+        # loop backward
+        for i in range(len(vertices) - 2, -1, -1):
+            # if the vertex before does not connect with destination vertex
+            if destination_vertex not in self.vertices[vertices[i]]:
+                # continue
+                continue
+            # otherwise,
+            else:
+                # add it to the list
+                path.append(vertices[i])
+                # set the current vertex to the destination
+                destination_vertex = vertices[i]
+
+        # reverse path
+        path.reverse()
+        # return path
+        return path
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
