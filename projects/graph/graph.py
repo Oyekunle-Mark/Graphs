@@ -91,7 +91,50 @@ class Graph:
         beginning from starting_vertex.
         This should be done using recursion.
         """
-        pass  # TODO
+        # create a stack to hold the vertices
+        s = Stack()
+        # add the starting_vertex to the stack
+        s.push(starting_vertex)
+        # let a set store the visited vertices
+        visited = set()
+
+        # loop while stack is not empty
+        while s.size() > 0:
+            # pop the stack
+            vertex = s.pop()
+
+            # if the popped vertex is not in visited
+            if vertex not in visited:
+                # add to visited
+                visited.add(vertex)
+                # print the vertex
+                print(vertex)
+
+                # add all its connected vertices to the queue
+                for v in self.vertices[vertex]:
+                    s.push(v)
+
+        # create a recursive function recurse_dft
+        def recurse_dft():
+            # write a base case of size of stack is zero
+            if s.size() == 0:
+                # return
+                return
+            # pop the vertex at the top of the stack
+            vertex = s.pop()
+            # if the popped vertex is not in visited
+            if vertex not in visited:
+                # add to visited
+                visited.add(vertex)
+                # print the vertex
+                print(vertex)
+                # add all its connected vertices to the queue
+                for v in self.vertices[vertex]:
+                    s.push(v)
+            # call recurse_dft
+            recurse_dft()
+        # call recurse_dft
+        recurse_dft()
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -163,14 +206,14 @@ if __name__ == '__main__':
     '''
     graph.bft(1)
 
-    # '''
-    # Valid DFT recursive paths:
-    #     1, 2, 3, 5, 4, 6, 7
-    #     1, 2, 3, 5, 4, 7, 6
-    #     1, 2, 4, 7, 6, 3, 5
-    #     1, 2, 4, 6, 3, 5, 7
-    # '''
-    # graph.dft_recursive(1)
+    '''
+    Valid DFT recursive paths:
+        1, 2, 3, 5, 4, 6, 7
+        1, 2, 3, 5, 4, 7, 6
+        1, 2, 4, 7, 6, 3, 5
+        1, 2, 4, 6, 3, 5, 7
+    '''
+    graph.dft_recursive(1)
 
     # '''
     # Valid BFS path:
