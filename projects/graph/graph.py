@@ -131,6 +131,24 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
+        # create a queue to hold the vertices
+        # enqueue the starting_vertex
+        # create an empty set visited to store visited vertices
+        # create an empty set searched to store searched vertices
+        # loop while queue is not empty
+            # dequeue the queue
+            # check if the vertex has not been searched
+                # if the dequeued vertex is the destination
+                    # add it to visitied
+                    # return visited
+                # otherwise
+                    # add it to searched
+                    # add all its vertices to the queue
+                        # if one of them is the destination
+                            # add to visited
+                            # return visited
+                    # add it to visited
+                
         pass  # TODO
 
     def dfs(self, starting_vertex, destination_vertex):
