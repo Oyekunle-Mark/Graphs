@@ -4,9 +4,10 @@ from util import Stack
 
 def earliest_ancestor(ancestors, starting_node):
     # FIRST REPRESENT THE INPUT ANCESTORS AS A GRAPH
+    # create a graph instance
     graph = Graph()
 
-    # loop through ancestors and add the tuples as vertices
+    # loop through ancestors and add every number as a vertex
     for parent, child in ancestors:
         # add the parent as a vertex
         graph.add_vertex(parent)
@@ -16,10 +17,12 @@ def earliest_ancestor(ancestors, starting_node):
     # # loop through ancestors and build the connections
     for parent, child in ancestors:
         # connect the parent to the child
+        # the connection is reversed because dft transverses downward
         graph.add_edge(child, parent)
 
-    # return -1 if input has no value
+    # if starting node has no child
     if not graph.vertices[starting_node]:
+        # return -1
         return -1
 
     # create a stack to hold the vertices
@@ -33,14 +36,12 @@ def earliest_ancestor(ancestors, starting_node):
     while s.size() > 0:
         # pop the stack
         vertex = s.pop()
-        # print the vertex
-        # print(vertex)
 
         # set the earliest_anc to vertex
         earliest_anc = vertex
 
         # add all its connected vertices to the queue
-        # sort the vertices to the order is maintained
+        # sort the vertices maintain order
         for v in sorted(graph.vertices[vertex]):
             s.push(v)
 
