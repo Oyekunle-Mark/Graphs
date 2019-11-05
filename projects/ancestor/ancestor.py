@@ -1,3 +1,6 @@
+from graph import Graph
+
+
 def find_ancestors(ancestors, starting_node):
     # create an empty list ancestors
     direct_ancestors = []
@@ -17,7 +20,22 @@ def find_ancestors(ancestors, starting_node):
 
 
 def earliest_ancestor(ancestors, starting_node):
-    pass
+    # FIRST REPRESENT THE INPUT ANCESTORS AS A GRAPH
+    graph = Graph()
+
+    # loop through ancestors and add the tuples as vertices
+    for parent, child in ancestors:
+        # add the parent as a vertex
+        graph.add_vertex(parent)
+        # add the child as a vertex as well
+        graph.add_vertex(child)
+
+    # # loop through ancestors and build the connections
+    for parent, child in ancestors:
+        # connect the parent to the child
+        graph.add_edge(child, parent)
+
+    print(graph.vertices)
 
 
 if __name__ == '__main__':
@@ -27,3 +45,5 @@ if __name__ == '__main__':
     print(find_ancestors(test_ancestors, 3))  # output should be [1, 2]
     print(find_ancestors(test_ancestors, 1))  # should output [1]
     print(find_ancestors(test_ancestors, 11))  # should output [-1]
+
+    earliest_ancestor(test_ancestors, 1) # will print the graph
