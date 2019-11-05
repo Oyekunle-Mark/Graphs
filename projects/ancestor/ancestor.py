@@ -1,4 +1,5 @@
 from graph import Graph
+from util import Stack
 
 
 def find_ancestors(ancestors, starting_node):
@@ -35,8 +36,6 @@ def earliest_ancestor(ancestors, starting_node):
         # connect the parent to the child
         graph.add_edge(child, parent)
 
-    print(graph.vertices)
-
 
 if __name__ == '__main__':
     test_ancestors = [(1, 3), (2, 3), (3, 6), (5, 6),
@@ -45,5 +44,3 @@ if __name__ == '__main__':
     print(find_ancestors(test_ancestors, 3))  # output should be [1, 2]
     print(find_ancestors(test_ancestors, 1))  # should output [1]
     print(find_ancestors(test_ancestors, 11))  # should output [-1]
-
-    earliest_ancestor(test_ancestors, 1) # will print the graph
