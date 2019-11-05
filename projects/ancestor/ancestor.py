@@ -36,6 +36,20 @@ def earliest_ancestor(ancestors, starting_node):
         # connect the parent to the child
         graph.add_edge(child, parent)
 
+    # create a stack to hold the vertices
+    s = Stack()
+    # add the starting_node to the stack
+    s.push(starting_node)
+
+    # loop while stack is not empty
+    while s.size() > 0:
+        # pop the stack
+        vertex = s.pop()
+
+        # add all its connected vertices to the queue
+        for v in graph.vertices[vertex]:
+            s.push(v)
+
 
 if __name__ == '__main__':
     test_ancestors = [(1, 3), (2, 3), (3, 6), (5, 6),
