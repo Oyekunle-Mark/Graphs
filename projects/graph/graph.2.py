@@ -16,7 +16,6 @@ class Graph:
     def add_edge(self, v1, v2):
         if v1 in self.vertices and v2 in self.vertices:
             self.vertices[v1].add(v2)
-            self.vertices[v2].add(v1)
         else:
             raise IndexError("That vertex does not exist!")
 
@@ -263,7 +262,7 @@ if __name__ == '__main__':
     Valid BFS path:
         [1, 2, 4, 6]
     '''
-    print(graph.bfs(1, 6))
+    print(graph.bfs_path(1, 6))
 
     print("\nDFS print:")
     '''
@@ -271,4 +270,4 @@ if __name__ == '__main__':
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
-    print(graph.dfs(1, 6))
+    print(graph.dfs_path(1, 6))
