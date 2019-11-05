@@ -36,19 +36,35 @@ def earliest_ancestor(ancestors, starting_node):
         # connect the parent to the child
         graph.add_edge(child, parent)
 
+    print(graph.vertices)
+
+    # return -1 if input has no value
+    if not graph.vertices[starting_node]:
+        return -1
+
     # create a stack to hold the vertices
     s = Stack()
     # add the starting_node to the stack
     s.push(starting_node)
+    # set earliest_anc to -1
+    earliest_anc = -1
 
     # loop while stack is not empty
     while s.size() > 0:
         # pop the stack
         vertex = s.pop()
+        # print the vertex
+        # print(vertex)
+
+        # set the earliest_anc to vertex
+        earliest_anc = vertex
 
         # add all its connected vertices to the queue
-        for v in graph.vertices[vertex]:
+        # sort the vertices to the order is maintained
+        for v in sorted(graph.vertices[vertex]):
             s.push(v)
+
+    return earliest_anc
 
 
 if __name__ == '__main__':
