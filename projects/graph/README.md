@@ -64,5 +64,3 @@ Write a function within your Graph class that takes takes a starting node and a 
 ## Part 5: Implement Depth-First Search
 
 Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs DFS. Your function should return a valid path (not necessarily the shortest) from the start node to the destination node. Note that there are multiple valid paths.
-
-
