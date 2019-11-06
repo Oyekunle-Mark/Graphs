@@ -123,6 +123,12 @@ class SocialGraph:
 if __name__ == '__main__':
     sg = SocialGraph()
     sg.populateGraph(10, 2)
+
+    print("\nThe social graph:")
     print(sg.friendships)
-    connections = sg.getAllSocialPaths(1)
+
+    userID = 1
+    connections = sg.getAllSocialPaths(userID)
+
+    print(f"\nUser {userID} connections and path:")
     print(connections)
