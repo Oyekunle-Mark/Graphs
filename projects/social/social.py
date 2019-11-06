@@ -1,4 +1,5 @@
-import random
+from random import shuffle
+from util import Queue
 
 
 class User:
@@ -66,7 +67,7 @@ class SocialGraph:
                 possibleFreindships.append((userID, friendID))
 
         # shuffle the possible friendships using the random.suffle method
-        random.shuffle(possibleFreindships)
+        shuffle(possibleFreindships)
 
         # create a friendship of the first x amount of pairs in the list
         # X determined by the formula: numUsers * avgFriendships // 2
