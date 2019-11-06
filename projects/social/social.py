@@ -96,6 +96,9 @@ class SocialGraph:
         # created an empty visited dictionary
         visited = {}  # Note that this is a dictionary, not a set
 
+        # counts up the number of separations between userID and other nodes
+        separation = 0
+
         # while the queue is not empty
         while q.size() > 0:
             # dequeue to the path
@@ -106,6 +109,8 @@ class SocialGraph:
             if user not in visited:
                 # add user to visited dictionary
                 visited[user] = path
+                # increment separation by len of path
+                separation += len(path)
 
                 # loop over next users in friendships at the index of user
                 for next_user in self.friendships[user]:
@@ -116,13 +121,20 @@ class SocialGraph:
                     # enqueue the new path
                     q.enqueue(new_path)
 
+        # print out some relevant stats
+        print("")
+        print('****** Average degree of separation',
+              separation // len(visited), "******")
+        print(
+            f"****** Percentage of other users in user {userID} extended network", len(visited) / len(self.friendships) * 100, "******")
+
         # return visited
         return visited
 
 
 if __name__ == '__main__':
     sg = SocialGraph()
-    sg.populateGraph(10, 2)
+    sg.populateGraph(1000, 5)
 
     print("\nThe social graph:")
     print(sg.friendships)
