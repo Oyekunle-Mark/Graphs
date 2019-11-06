@@ -66,7 +66,7 @@ class SocialGraph:
                 # append the tuple of (user id , friend id) to the possible friendships list
                 possibleFriendships.append((userID, friendID))
 
-        # shuffle the possible friendships using the random.suffle method
+        # shuffle the possible friendships using the random.shuffle method
         shuffle(possibleFriendships)
 
         # create a friendship of the first x amount of pairs in the list
